@@ -3,57 +3,83 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/06 17:03:06 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/07 20:59:30 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push	*create_new_node(int value)
+static void	init_stack(t_push **stack, int argc, char **argv)
 {
 	t_push	*new;
+	char	**args;
+	int		i;
 
-	new = malloc(sizeof(t_push));
-	new->value = value;
-	new->next = NULL;
-	return (new);
+	i = 0;
+	if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else
+	{
+		i = 1;
+		args = argv;
+	}
+	while (args[i])
+	{
+		new = create_new_node(ft_atoi(args[i]));
+		add_back_stack(stack, new);
+		i++;
+	}
 }
 
-void	ft_print_list(t_push *a)
+static void	ft_print_list(t_push **a)
 {
-	while (a)
+	t_push	*temp;
+
+	temp = (t_push *)malloc(sizeof(t_push));
+	temp = *a;
+	while (temp)
 	{
-		ft_putnbr_fd(a->value, 1);
+		ft_putnbr_fd(temp->value, 1);
 		ft_putstr_fd("\n", 1);
-		a = a->next;
+		temp = temp->next;
 	}
+}
+
+static int	ft_error_message(char *str)
+{
+	ft_putstr_fd("Error: ", 1);
+	ft_putstr_fd(str, 1);
+	ft_putstr_fd("\n", 1);
+	return (-1);
 }
 
 int	main(int argc, char **argv)
 {
-	t_push	*a;
-	t_push	*temp;
-	int		i;
-	int		value;
+	t_push	**a;
+	t_push	**b;
 
-	a = NULL;
 	if (argc < 2)
-		return (-1);
+		return (ft_error_message("Wrong paramaters!"));
 	else
 	{
-		i = 1;
-		while (argv[i])
+		if (is_int(argv) != 0 && check_twin(argv) != 0)
 		{
-			value = ft_atoi(argv[i]);
-			temp = create_new_node(value);
-			temp->next = a;
-			a = temp;
-			i++;
+			a = (t_push **)malloc(sizeof(t_push));
+			b = (t_push **)malloc(sizeof(t_push));
+			*a = NULL;
+			*b = NULL;
+			init_stack(a, argc, argv);
 		}
+		else
+			return (ft_error_message("Wrong numbers!"));
 	}
 	ft_print_list(a);
+	if (is_sorted(a) == 0)
+	{
+		sort_stack(a, b);
+	}
 	return (0);
 }

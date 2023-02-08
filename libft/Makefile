@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+         #
+#    By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/25 15:01:24 by jsavard           #+#    #+#              #
-#    Updated: 2022/10/25 15:01:26 by jsavard          ###   ########.fr        #
+#    Updated: 2023/02/07 19:59:22 by johnysavard      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC = 	ft_bzero.c ft_memmove.c ft_memcpy.c ft_strlen.c ft_toupper.c\
 		ft_putstr_fd.c ft_isascii.c ft_itoa.c ft_memchr.c ft_atoi.c\
 		ft_strlcat.c ft_strncmp.c ft_memcmp.c ft_strchr.c ft_strrchr.c\
 		ft_strnstr.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c\
-		ft_memset.c ft_strtrim.c ft_split.c ft_strmapi.c ft_striteri.c
+		ft_memset.c ft_strtrim.c ft_split.c ft_strmapi.c ft_striteri.c\
+		ft_strcmp
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 HEADER = libft.h

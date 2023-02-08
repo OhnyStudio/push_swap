@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/06 16:45:07 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/08 13:08:58 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,26 @@
 
 typedef struct s_push
 {
-	int				*value;
-	int				*index;
+	int				value;
+	int				index;
 	struct s_push	*next;
 }	t_push;
+
+//Validation
+int		is_int(char **argv);
+int		check_twin(char	**argv);
+int		is_sorted(t_push **stack);
+int		stack_size(t_push *stack);
+//Utils
+void	add_back_stack(t_push **stack, t_push *new);
+void	add_front_stack(t_push **stack, t_push *new);
+void	sort_stack(t_push **stack_a, t_push **stack_b);
+t_push	*create_new_node(int value);
+//Action Swap
+int		sa(t_push **stack_a);
+int		sb(t_push **stack_b);
+int		ss(t_push **stack_a, t_push **stack_b);
+//Action Push
+int		pa(t_push **stack_a, t_push **stack_b);
+int		pb(t_push **stack_b, t_push **stack_a);
 #endif
