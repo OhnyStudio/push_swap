@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/07 20:59:30 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/08 16:19:23 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,9 @@ int	main(int argc, char **argv)
 	{
 		sort_stack(a, b);
 	}
+	ft_putstr_fd("Stack a: ", 1);
+	ft_print_list(a);
+	ft_putstr_fd("Stack b: ", 1);
+	ft_print_list(b);
 	return (0);
 }

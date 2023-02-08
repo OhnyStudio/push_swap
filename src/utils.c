@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:38:26 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/07 21:03:13 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/08 16:20:03 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ void	add_front_stack(t_push **stack, t_push *new)
 
 void	sort_stack(t_push **stack_a, t_push **stack_b)
 {
-	(void)stack_a;
 	(void)stack_b;
+	sa(stack_a);
+	pb(stack_b, stack_a);
+	pb(stack_b, stack_a);
 	ft_putstr_fd("Whille Sorts soon!\n", 1);
 }
