@@ -9,7 +9,10 @@ CFILES		=	src/action_push.c \
 				src/action_swap.c \
 				src/push_swap.c \
 				src/utils.c \
-				src/validation.c
+				src/validation.c \
+				src/algo.c \
+				src/find.c \
+				src/algo_utils.c
 Y			=	"\033[33m"
 R			=	"\033[31m"
 G			=	"\033[32m"

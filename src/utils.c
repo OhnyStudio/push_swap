@@ -6,7 +6,7 @@
 /*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 17:38:26 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/08 19:29:46 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/08 23:15:06 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,19 @@ void	add_front_stack(t_push **stack, t_push *new)
 
 void	sort_stack(t_push **stack_a, t_push **stack_b)
 {
+	int	size;
+	int	min;
+	int	max;
+
+	min = find_min(stack_a);
+	max = find_max(stack_a);
+	size = stack_size(*stack_a);
+	if (size == 2)
+		algo2(stack_a);
+	else if (size == 3)
+		algo3(stack_a, min, max);
+	else if (size == 4)
+		algo4(stack_a, stack_b, min, max);
 	(void)stack_b;
 	(void)stack_a;
-	rra(stack_a);
-	ft_putstr_fd("Whille Sorts soon!\n", 1);
 }

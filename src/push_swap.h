@@ -6,7 +6,7 @@
 /*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/08 19:14:29 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/08 23:14:56 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,13 @@ void	rr(t_push **stack_a, t_push **stack_b);
 void	rra(t_push **stack_a);
 void	rrb(t_push **stack_b);
 void	rrr(t_push **stack_a, t_push **stack_b);
+//Find
+int		find_min(t_push	**stack);
+int		find_max(t_push	**stack);
+//Algo
+void	algo2(t_push **stack);
+void	algo3(t_push **stack_a, int min, int max);
+void	algo4(t_push **stack_a, t_push **stack_b, int min, int max);
+//Algo Utils
+void	min_to_top(t_push **stack, int min);
 #endif
