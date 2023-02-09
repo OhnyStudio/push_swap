@@ -6,7 +6,7 @@
 /*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/08 13:08:58 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/08 19:14:29 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ int		ss(t_push **stack_a, t_push **stack_b);
 //Action Push
 int		pa(t_push **stack_a, t_push **stack_b);
 int		pb(t_push **stack_b, t_push **stack_a);
+//Action Rotate
+void	ra(t_push **stack_a);
+void	rb(t_push **stack_b);
+void	rr(t_push **stack_a, t_push **stack_b);
+//Action RRotate
+void	rra(t_push **stack_a);
+void	rrb(t_push **stack_b);
+void	rrr(t_push **stack_a, t_push **stack_b);
 #endif
