@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 20:55:31 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/08 16:15:41 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/09 13:43:30 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,22 @@ static void	push(t_push **stack_to, t_push **stack_from)
 	*stack_from = next_push;
 }
 
-int	pa(t_push **stack_a, t_push **stack_b)
+int	pa(t_push **stack_a, t_push **stack_b, int is_printing)
 {
 	if (stack_size(*stack_b) < 1)
 		return (0);
 	push(stack_a, stack_b);
-	ft_putstr_fd("pa\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("pa\n", 1);
 	return (1);
 }
 
-int	pb(t_push **stack_b, t_push **stack_a)
+int	pb(t_push **stack_b, t_push **stack_a, int is_printing)
 {
 	if (stack_size(*stack_a) < 1)
 		return (0);
 	push(stack_b, stack_a);
-	ft_putstr_fd("pb\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("pb\n", 1);
 	return (1);
 }

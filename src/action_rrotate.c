@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_rrotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:11:56 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/08 19:33:24 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/09 13:45:47 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,24 @@ static void	rrotate(t_push **stack)
 	before_tail->next = NULL;
 }
 
-void	rra(t_push **stack_a)
+void	rra(t_push **stack_a, int is_printing)
 {
 	rrotate(stack_a);
-	ft_putstr_fd("rra\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("rra\n", 1);
 }
 
-void	rrb(t_push **stack_b)
+void	rrb(t_push **stack_b, int is_printing)
 {
 	rrotate(stack_b);
-	ft_putstr_fd("rrb\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("rrb\n", 1);
 }
 
-void	rrr(t_push **stack_a, t_push **stack_b)
+void	rrr(t_push **stack_a, t_push **stack_b, int is_printing)
 {
 	rrotate(stack_a);
 	rrotate(stack_b);
-	ft_putstr_fd("rrr\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("rrr\n", 1);
 }

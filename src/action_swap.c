@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action_swap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 20:26:05 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/07 20:54:48 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/09 13:46:10 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,33 @@ static void	swap(t_push **stack)
 	next->index = tmp_index;
 }
 
-int	sa(t_push **stack_a)
+int	sa(t_push **stack_a, int is_printing)
 {
 	if (stack_size(*stack_a) < 2)
 		return (0);
 	swap(stack_a);
-	ft_putstr_fd("sa\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("sa\n", 1);
 	return (1);
 }
 
-int	sb(t_push **stack_b)
+int	sb(t_push **stack_b, int is_printing)
 {
 	if (stack_size(*stack_b) < 2)
 		return (0);
 	swap(stack_b);
-	ft_putstr_fd("sb\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("sb\n", 1);
 	return (1);
 }
 
-int	ss(t_push **stack_a, t_push **stack_b)
+int	ss(t_push **stack_a, t_push **stack_b, int is_printing)
 {
 	if (stack_size(*stack_a) < 2 || stack_size(*stack_b) < 2)
 		return (0);
 	swap(stack_a);
 	swap(stack_b);
-	ft_putstr_fd("ss\n", 1);
+	if (is_printing != 0)
+		ft_putstr_fd("ss\n", 1);
 	return (1);
 }

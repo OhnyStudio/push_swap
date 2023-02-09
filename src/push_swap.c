@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/08 22:29:02 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/09 13:09:21 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ static void	init_stack(t_push **stack, int argc, char **argv)
 	}
 }
 
-static void	ft_print_list(t_push **a)
-{
-	t_push	*temp;
+// static void	ft_print_list(t_push **a)
+// {
+// 	t_push	*temp;
 
-	temp = (t_push *)malloc(sizeof(t_push));
-	temp = *a;
-	while (temp)
-	{
-		ft_putnbr_fd(temp->value, 1);
-		ft_putstr_fd("\n", 1);
-		temp = temp->next;
-	}
-}
+// 	temp = (t_push *)malloc(sizeof(t_push));
+// 	temp = *a;
+// 	while (temp)
+// 	{
+// 		ft_putnbr_fd(temp->value, 1);
+// 		ft_putstr_fd("\n", 1);
+// 		temp = temp->next;
+// 	}
+// }
 
 static int	ft_error_message(char *str)
 {
@@ -76,11 +76,7 @@ int	main(int argc, char **argv)
 		else
 			return (ft_error_message("Wrong numbers!"));
 	}
-	ft_print_list(a);
 	if (is_sorted(a) == 0)
-	{
 		sort_stack(a, b);
-		ft_print_list(a);
-	}
 	return (0);
 }
