@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 17:38:26 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/09 14:10:25 by jsavard          ###   ########.fr       */
+/*   Created: 2023/02/11 10:59:09 by johnysavard       #+#    #+#             */
+/*   Updated: 2023/02/11 11:19:50 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,13 @@ void	sort_stack(t_push **stack_a, t_push **stack_b)
 	max = find_max(stack_a);
 	size = stack_size(*stack_a);
 	if (size == 2)
-		algo2(stack_a);
+		algo2(stack_a, stack_b);
 	else if (size == 3)
-		algo3(stack_a, min, max);
+		algo3(stack_a, stack_b, min, max);
 	else if (size == 4)
 		algo4(stack_a, stack_b, min, max);
 	else if (size > 4)
-		algo_test(stack_a, stack_a, min, max);
+		algo_other(stack_a, stack_b, min, max);
 	(void)stack_b;
 	(void)stack_a;
 }

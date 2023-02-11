@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/09 13:44:37 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/11 11:19:52 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,32 @@ int		is_int(char **argv);
 int		check_twin(char	**argv);
 int		is_sorted(t_push **stack);
 int		stack_size(t_push *stack);
-//Utils
+//List Utils
 void	add_back_stack(t_push **stack, t_push *new);
 void	add_front_stack(t_push **stack, t_push *new);
 void	sort_stack(t_push **stack_a, t_push **stack_b);
 t_push	*create_new_node(int value);
-//Action Swap
-int		sa(t_push **stack_a, int is_printing);
-int		sb(t_push **stack_b, int is_printing);
-int		ss(t_push **stack_a, t_push **stack_b, int is_printing);
-//Action Push
-int		pa(t_push **stack_a, t_push **stack_b, int is_printing);
-int		pb(t_push **stack_b, t_push **stack_a, int is_printing);
-//Action Rotate
-void	ra(t_push **stack_a, int is_printing);
-void	rb(t_push **stack_b, int is_printing);
-void	rr(t_push **stack_a, t_push **stack_b, int is_printing);
-//Action RRotate
-void	rra(t_push **stack_a, int is_printing);
-void	rrb(t_push **stack_b, int is_printing);
-void	rrr(t_push **stack_a, t_push **stack_b, int is_printing);
+//Move action
+int		send_action(char *action, t_push **a, t_push **b, int is_print);
 //Find
 int		find_min(t_push	**stack);
 int		find_max(t_push	**stack);
+int		ra_or_rra(t_push **stack, int max);
+void	set_index(t_push **stack, int next_min, int index);
 //Algo
-void	algo2(t_push **stack);
-void	algo3(t_push **stack_a, int min, int max);
+void	algo2(t_push **stack_a, t_push **stack_b);
+void	algo3(t_push **stack_a, t_push **stack_b, int min, int max);
 void	algo4(t_push **stack_a, t_push **stack_b, int min, int max);
 void	algo_other(t_push **stack_a, t_push **stack_b, int min, int max);
 //Algo Utils
-void	min_to_top(t_push **stack, int min);
+int		find_if_rotate(t_push **stack);
+int		find_if_backward(t_push **stack);
+void	min_to_top(t_push **stack_a, t_push **stack_b, int min);
+void	make_rotation(t_push **stack_a, t_push **stack_b, int max);
+void	set_backward(t_push **stack_a, t_push **stack_b, int max);
+//Algo Other]
+void	new_algo(t_push **stack_a, t_push **stack_b, int max);
+//Test fonction
+int		find_median(t_push **stack);
+void	ft_print_list(t_push **a);
 #endif
