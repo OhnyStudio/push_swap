@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:05:20 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/07 20:57:06 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/15 15:03:54 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,26 @@ int	is_sorted(t_push **stack)
 {
 	t_push	*temp;
 	int		current;
+	int		is_ok;
 
 	temp = *stack;
 	current = temp->value;
+	is_ok = 1;
 	while (temp)
 	{
 		if (temp->next != NULL)
 		{
 			if (current > temp->next->value)
-				return (0);
-			current = temp->value;
+			{
+				is_ok = 0;
+				break ;
+			}
 		}
 		temp = temp->next;
+		if (temp != NULL)
+			current = temp->value;
 	}
-	if (temp)
-		free(temp);
-	return (1);
+	return (is_ok);
 }
 
 int	check_twin(char	**argv)

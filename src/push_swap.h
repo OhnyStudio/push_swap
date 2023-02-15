@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/11 11:19:52 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/15 16:04:50 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	min_to_top(t_push **stack_a, t_push **stack_b, int min);
 void	make_rotation(t_push **stack_a, t_push **stack_b, int max);
 void	set_backward(t_push **stack_a, t_push **stack_b, int max);
 //Algo Other]
-void	new_algo(t_push **stack_a, t_push **stack_b, int max);
+void	new_algo(t_push **stack_a, t_push **stack_b, int min, int max);
 //Test fonction
 int		find_median(t_push **stack);
 void	ft_print_list(t_push **a);

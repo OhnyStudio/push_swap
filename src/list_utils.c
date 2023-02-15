@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:59:09 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/11 11:19:50 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/15 16:37:50 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,4 @@ void	sort_stack(t_push **stack_a, t_push **stack_b)
 	else if (size > 4)
 		algo_other(stack_a, stack_b, min, max);
 	(void)stack_b;
-	(void)stack_a;
 }

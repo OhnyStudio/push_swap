@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_action.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:40 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/10 20:21:52 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/15 15:52:14 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ static int	swap(t_push **stack)
 
 int	send_action(char *action, t_push **a, t_push **b, int is_print)
 {
+	if (is_print != 0)
+	{
+		ft_putstr_fd(action, 1);
+		ft_putstr_fd("\n", 1);
+	}
 	if (ft_strcmp(action, "pa") == 0)
 		return (push(a, b));
 	if (ft_strcmp(action, "pb") == 0)
@@ -110,10 +115,5 @@ int	send_action(char *action, t_push **a, t_push **b, int is_print)
 		return (swap(a));
 	if (ft_strcmp(action, "sb") == 0 || ft_strcmp(action, "ss") == 0)
 		return (swap(b));
-	if (is_print != 0)
-	{
-		ft_putstr_fd(action, 1);
-		ft_putstr_fd("\n", 1);
-	}
 	return (1);
 }

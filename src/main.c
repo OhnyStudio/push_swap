@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/11 11:21:26 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/15 15:55:21 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 		sort_stack(a, b);
 	ft_putstr_fd("List A: \n", 1);
 	ft_print_list(a);
-	ft_putstr_fd("\nList B: \n", 1);
+	ft_putstr_fd("List B: \n", 1);
 	ft_print_list(b);
 	return (0);
 }
