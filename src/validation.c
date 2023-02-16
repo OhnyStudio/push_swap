@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:05:20 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/15 15:03:54 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/16 14:52:52 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,22 @@ int	is_int(char **argv)
 
 int	is_sorted(t_push **stack)
 {
-	t_push	*temp;
-	int		current;
+	t_push	*head;
 	int		is_ok;
 
-	temp = *stack;
-	current = temp->value;
+	head = *stack;
 	is_ok = 1;
-	while (temp)
+	while (head)
 	{
-		if (temp->next != NULL)
+		if (head->next != NULL)
 		{
-			if (current > temp->next->value)
+			if (head->value > head->next->value)
 			{
 				is_ok = 0;
 				break ;
 			}
 		}
-		temp = temp->next;
-		if (temp != NULL)
-			current = temp->value;
+		head = head->next;
 	}
 	return (is_ok);
 }

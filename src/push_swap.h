@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/15 16:04:50 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/16 15:54:37 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,10 @@ void	set_backward(t_push **stack_a, t_push **stack_b, int max);
 void	new_algo(t_push **stack_a, t_push **stack_b, int min, int max);
 //Test fonction
 int		find_median(t_push **stack);
+int		find_tail(t_push **stack);
+int		count_rotation(t_push **stack, int new);
+int		other_smaller(int value, int other_value);
 void	ft_print_list(t_push **a);
+void	split_median(t_push **stack_a, t_push **stack_b);
+
 #endif
