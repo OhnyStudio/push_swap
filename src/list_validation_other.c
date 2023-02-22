@@ -1,76 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_fonction.c                                    :+:      :+:    :+:   */
+/*   list_validation_other.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:05:07 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/16 15:58:18 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:56:46 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	split_median(t_push **stack_a, t_push **stack_b)
-{
-	t_push	*head;
-	t_push	*tmp;
-	int		median;
-	int		size;
-
-	median = find_median(stack_a);
-	head = *stack_a;
-	size = stack_size(*stack_a);
-	while (size--)
-	{
-		if (head->value > median)
-		{
-			tmp = head->next;
-			send_action("pb", stack_a, stack_b, 1);
-			head = tmp;
-		}
-		else
-		{
-			send_action("ra", stack_a, stack_b, 1);
-			head = *stack_a;
-		}
-	}
-}
-
-//Bigger than tail and small than head
-//Count rb if rb count > size / 2
-
-int	find_median(t_push **stack)
-{
-	t_push	*head;
-	int		index_median;
-
-	head = *stack;
-	index_median = stack_size(*stack) / 2 + 1;
-	while (head)
-	{
-		if (head->index == index_median)
-			return (head->value);
-		head = head->next;
-	}
-	return (0);
-}
-
-int	find_tail(t_push **stack)
-{
-	t_push	*head;
-	int		value;
-
-	head = *stack;
-	value = 0;
-	while (head)
-	{
-		value = head->value;
-		head = head->next;
-	}
-	return (value);
-}
 
 void	ft_print_list(t_push **a)
 {
@@ -86,6 +26,64 @@ void	ft_print_list(t_push **a)
 		ft_putstr_fd("\n", 1);
 		temp = temp->next;
 	}
+}
+
+int	find_if_rotate(t_push **stack)
+{
+	t_push	*head;
+	int		size;
+	int		next_index;
+
+	head = *stack;
+	size = stack_size(*stack);
+	while (head)
+	{
+		if (head->next != NULL)
+		{
+			next_index = head->next->index;
+			if (head->index == size)
+			{
+				if (next_index != 1)
+					return (0);
+			}
+			else
+			{
+				if (next_index != head->index + 1)
+					return (0);
+			}
+		}
+		head = head->next;
+	}
+	return (1);
+}
+
+int	find_if_backward(t_push **stack)
+{
+	t_push	*head;
+	int		size;
+	int		next_index;
+
+	head = *stack;
+	size = stack_size(*stack);
+	while (head)
+	{
+		if (head->next != NULL)
+		{
+			next_index = head->next->index;
+			if (head->index == 1)
+			{
+				if (next_index != size)
+					return (0);
+			}
+			else
+			{
+				if (next_index != head->index - 1)
+					return (0);
+			}
+		}
+		head = head->next;
+	}
+	return (1);
 }
 
 int	count_rotation(t_push **stack, int value)
@@ -114,11 +112,4 @@ int	count_rotation(t_push **stack, int value)
 		head = head->next;
 	}
 	return (real_count);
-}
-
-int	other_smaller(int value, int other_value)
-{
-	if (value > other_value)
-		return (1);
-	return (0);
 }

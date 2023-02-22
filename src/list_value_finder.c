@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   find.c                                             :+:      :+:    :+:   */
+/*   list_value_finder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:50:56 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/11 11:13:03 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/02/22 15:51:13 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,45 +51,33 @@ int	find_max(t_push	**stack)
 	return (max);
 }
 
-void	set_index(t_push **stack, int current_min, int index)
+int	find_tail(t_push **stack)
 {
 	t_push	*head;
-	t_push	*min_node;
-	int		new_min;
+	int		value;
 
 	head = *stack;
-	new_min = 2147483647;
+	value = 0;
 	while (head)
 	{
-		if (head->value < new_min && head->value > current_min)
-		{
-			min_node = head;
-			new_min = head->value;
-		}
+		value = head->value;
 		head = head->next;
 	}
-	min_node->index = index;
-	if (new_min != find_max(stack))
-		set_index(stack, new_min, ++index);
+	return (value);
 }
 
-int	ra_or_rra(t_push **stack, int max)
+int	find_median(t_push **stack)
 {
 	t_push	*head;
-	int		size;
-	int		count;
+	int		index_median;
 
-	size = stack_size(*stack);
-	count = 0;
 	head = *stack;
+	index_median = stack_size(*stack) / 2 + 1;
 	while (head)
 	{
-		if (head->value == max)
-			break ;
+		if (head->index == index_median)
+			return (head->value);
 		head = head->next;
-		count++;
 	}
-	if (count >= size / 2)
-		return (1);
 	return (0);
 }

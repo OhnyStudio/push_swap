@@ -3,15 +3,15 @@ CC 			=	gcc
 CFLAGS 		=	-Wall -Wextra -Werror -g
 LIBFT_PATH	=	libft/
 LIBFT_LIB	=	$(LIBFT_PATH)libft.a
-CFILES		=	src/algo_other.c \
+CFILES		=	src/algo_complexe.c \
 				src/algo_utils.c \
 				src/algo.c \
-				src/find.c \
-				src/list_utils.c \
-				src/move_action.c \
-				src/main.c \
-				src/validation.c \
-				src/test_fonction.c
+				src/base_action.c \
+				src/list_creator.c \
+				src/list_validation_other.c \
+				src/list_validation.c \
+				src/list_value_finder.c \
+				src/main.c
 Y			=	"\033[33m"
 R			=	"\033[31m"
 G			=	"\033[32m"

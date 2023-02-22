@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_utils.c                                       :+:      :+:    :+:   */
+/*   list_creator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:59:09 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/15 16:37:50 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:54:52 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@ static t_push	*stack_last(t_push *stack)
 		stack = stack->next;
 	}
 	return (NULL);
-}
-
-t_push	*create_new_node(int value)
-{
-	t_push	*new_list;
-
-	new_list = (t_push *)malloc(sizeof(t_push));
-	if (!new_list)
-		return (NULL);
-	new_list->value = value;
-	new_list->next = NULL;
-	return (new_list);
 }
 
 void	add_back_stack(t_push **stack, t_push *new)
@@ -61,22 +49,24 @@ void	add_front_stack(t_push **stack, t_push *new)
 	}
 }
 
-void	sort_stack(t_push **stack_a, t_push **stack_b)
+void	set_index(t_push **stack, int current_min, int index)
 {
-	int	size;
-	int	min;
-	int	max;
+	t_push	*head;
+	t_push	*min_node;
+	int		new_min;
 
-	min = find_min(stack_a);
-	max = find_max(stack_a);
-	size = stack_size(*stack_a);
-	if (size == 2)
-		algo2(stack_a, stack_b);
-	else if (size == 3)
-		algo3(stack_a, stack_b, min, max);
-	else if (size == 4)
-		algo4(stack_a, stack_b, min, max);
-	else if (size > 4)
-		algo_other(stack_a, stack_b, min, max);
-	(void)stack_b;
+	head = *stack;
+	new_min = 2147483647;
+	while (head)
+	{
+		if (head->value < new_min && head->value > current_min)
+		{
+			min_node = head;
+			new_min = head->value;
+		}
+		head = head->next;
+	}
+	min_node->index = index;
+	if (new_min != find_max(stack))
+		set_index(stack, new_min, ++index);
 }

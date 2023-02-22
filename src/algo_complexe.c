@@ -1,91 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_other.c                                       :+:      :+:    :+:   */
+/*   list_algo_complexe.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:27 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/16 16:02:54 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/22 15:40:08 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static int	is_min_max(t_push **a, t_push **b, int min, int max)
-{
-	char	*action;
-
-	if ((*a)->value == min)
-	{
-		if (ra_or_rra(b, find_max(b)) == 0)
-			action = "rb";
-		else
-			action = "rrb";
-		while ((*b)->value != find_min(b))
-			send_action(action, a, b, 1);
-		return (1);
-	}
-	else if ((*a)->value == max)
-	{
-		if (ra_or_rra(b, find_max(b)) == 0)
-			action = "rrb";
-		else
-			action = "rb";
-		while ((*b)->value != find_max(b))
-			send_action(action, a, b, 1);
-		return (1);
-	}
-	return (0);
-}
-
-char	*get_action(t_push **a, t_push **b, int value)
-{
-	char	*action;
-
-	if (stack_size(*a) > 1)
-	{
-		if (other_smaller(value, find_tail(a)) == 0)
-			send_action("rra", a, b, 1);
-		else
-		{
-			if (other_smaller(value, (*a)->next->value) == 0)
-				send_action("ra", a, b, 1);
-		}
-	}
-	if (count_rotation(b, (*a)->value) < stack_size(*b) / 2)
-		action = "rb";
-	else
-		action = "rrb";
-	return (action);
-}
-
-static void	insert_to_b(t_push **a, t_push **b, int min, int max)
-{
-	t_push	*head_a;
-	t_push	*head_b;
-	char	*action;
-
-	head_a = *a;
-	head_b = *b;
-	while (head_a)
-	{
-		if (is_min_max(a, b, min, max) == 0)
-		{
-			action = get_action(a, b, head_a->value);
-			head_a = *a;
-			while (head_a->value > find_tail(b)
-				|| head_a->value < head_b->value)
-			{
-				send_action(action, a, b, 1);
-				head_b = *b;
-			}
-		}
-		send_action("pb", a, b, 1);
-		head_a = *a;
-		head_b = *b;
-	}
-}
 
 static void	send_double_action(t_push **a, t_push **b)
 {
@@ -93,7 +18,7 @@ static void	send_double_action(t_push **a, t_push **b)
 	send_action("rb", a, b, 1);
 }
 
-static void	swap_to_b(t_push **a, t_push **b, int size)
+void	swap_to_b(t_push **a, t_push **b, int size)
 {
 	t_push	*head;
 	t_push	*tmp;
@@ -122,22 +47,77 @@ static void	swap_to_b(t_push **a, t_push **b, int size)
 	}
 }
 
-void	new_algo(t_push **a, t_push **b, int min, int max)
+static int	is_min_max(t_push **a, t_push **b, int min, int max)
 {
-	int	size;
-	int	median;	
+	char	*action;
 
-	size = stack_size(*a);
-	median = find_median(a);
-	if (size > 20)
+	if ((*a)->value == min)
 	{
-		split_median(a, b);
-		while (stack_size(*b) > 0)
-			send_action("pa", a, b, 1);
+		if (ra_or_rra(b, find_max(b)) == 0)
+			action = "rb";
+		else
+			action = "rrb";
+		while ((*b)->value != find_min(b))
+			send_action(action, a, b, 1);
+		return (1);
 	}
-	swap_to_b(a, b, size);
-	insert_to_b(a, b, min, max);
-	while (stack_size(*b) > 0)
-		send_action("pa", a, b, 1);
-	make_rotation(a, b, max);
+	else if ((*a)->value == max)
+	{
+		if (ra_or_rra(b, find_max(b)) == 0)
+			action = "rrb";
+		else
+			action = "rb";
+		while ((*b)->value != find_max(b))
+			send_action(action, a, b, 1);
+		return (1);
+	}
+	return (0);
+}
+
+static char	*get_action(t_push **a, t_push **b, int value)
+{
+	char	*action;
+
+	if (stack_size(*a) > 1)
+	{
+		if (other_smaller(value, find_tail(a)) == 0)
+			send_action("rra", a, b, 1);
+		else
+		{
+			if (other_smaller(value, (*a)->next->value) == 0)
+				send_action("ra", a, b, 1);
+		}
+	}
+	if (count_rotation(b, (*a)->value) < stack_size(*b) / 2)
+		action = "rb";
+	else
+		action = "rrb";
+	return (action);
+}
+
+void	insert_to_b(t_push **a, t_push **b, int min, int max)
+{
+	t_push	*head_a;
+	t_push	*head_b;
+	char	*action;
+
+	head_a = *a;
+	head_b = *b;
+	while (head_a)
+	{
+		if (is_min_max(a, b, min, max) == 0)
+		{
+			action = get_action(a, b, head_a->value);
+			head_a = *a;
+			while (head_a->value > find_tail(b)
+				|| head_a->value < head_b->value)
+			{
+				send_action(action, a, b, 1);
+				head_b = *b;
+			}
+		}
+		send_action("pb", a, b, 1);
+		head_a = *a;
+		head_b = *b;
+	}
 }

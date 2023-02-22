@@ -6,11 +6,23 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/16 14:00:14 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/22 14:36:11 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static t_push	*create_new_node(int value)
+{
+	t_push	*new_list;
+
+	new_list = (t_push *)malloc(sizeof(t_push));
+	if (!new_list)
+		return (NULL);
+	new_list->value = value;
+	new_list->next = NULL;
+	return (new_list);
+}
 
 static void	init_stack(t_push **stack, int argc, char **argv)
 {
