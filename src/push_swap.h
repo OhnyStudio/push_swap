@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/23 16:06:20 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/23 16:45:08 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,18 @@
 
 typedef struct s_push
 {
+	int				need_swap;
+	int				nb_r;
+	int				nb_rr;
 	int				value;
 	long			index;
+	long			current_index;
 	struct s_push	*next;
 }	t_push;
 
+//List check rotation
+void	set_rotation(t_push **stack);
+char	*check_if_r_or_rr(t_push **stack);
 //List Check bit
 int		find_max_bit(int index);
 void	check_bit(t_push **stack_a, t_push **stack_b, int n, int max);
@@ -43,6 +50,7 @@ void	sort_stack(t_push **stack_a, t_push **stack_b);
 //Base action
 int		send_action(char *action, t_push **a, t_push **b, int is_print);
 //List creator
+void	set_current_index(t_push **stack);
 void	add_back_stack(t_push **stack, t_push *new);
 void	add_front_stack(t_push **stack, t_push *new);
 void	set_index(t_push **stack, int current_min, long index);

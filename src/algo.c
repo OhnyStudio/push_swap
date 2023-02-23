@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:35:53 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/23 16:06:46 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/23 16:47:04 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,20 @@ static void	big_algo(t_push **stack_a, t_push **stack_b, int min, int max)
 	temp = 3;
 	max_bit = 0;
 	set_index(stack_a, min, 2);
+	set_current_index(stack_a);
+	set_rotation(stack_a);
+	ft_putstr_fd("R or RR: ", 1);
+	ft_putstr_fd(check_if_r_or_rr(stack_a), 1);
+	ft_putstr_fd("\n", 1);
 	if (find_if_rotate(stack_a) != 0)
 		make_rotation(stack_a, stack_b, max);
 	else if (find_if_backward(stack_a) != 0)
 		set_backward(stack_a, stack_b, max);
 	else
 	{
-		max_bit = find_max_bit(find_max(stack_a, 1));
-		check_bit(stack_a, stack_b, 0, max_bit);
-		set_backward(stack_a, stack_b, max);
+		// max_bit = find_max_bit(find_max(stack_a, 1));
+		// check_bit(stack_a, stack_b, 0, max_bit);
+		// set_backward(stack_a, stack_b, max);
 	}
 }
 

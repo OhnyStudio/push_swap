@@ -12,6 +12,7 @@ CFILES		=	src/algo_complexe.c \
 				src/list_validation.c \
 				src/list_value_finder.c \
 				src/list_check_bit.c \
+				src/list_check_rotation.c \
 				src/main.c
 Y			=	"\033[33m"
 R			=	"\033[31m"

@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:05:07 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/23 13:55:33 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/23 16:35:43 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ void	ft_print_list(t_push **a)
 		ft_putnbr_fd(temp->value, 1);
 		ft_putstr_fd(" index: ", 1);
 		ft_putnbr_fd(temp->index, 1);
+		ft_putstr_fd(" curent index: ", 1);
+		ft_putnbr_fd(temp->current_index, 1);
+		ft_putstr_fd(" R: ", 1);
+		ft_putnbr_fd(temp->nb_r, 1);
+		ft_putstr_fd(" RR: ", 1);
+		ft_putnbr_fd(temp->nb_rr, 1);
+		ft_putstr_fd(" Swap Need: ", 1);
+		ft_putnbr_fd(temp->need_swap, 1);
 		ft_putstr_fd("\n", 1);
 		temp = temp->next;
 	}
