@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:59:09 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/22 15:54:52 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/23 13:55:26 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	add_front_stack(t_push **stack, t_push *new)
 	}
 }
 
-void	set_index(t_push **stack, int current_min, int index)
+void	set_index(t_push **stack, int current_min, long index)
 {
 	t_push	*head;
 	t_push	*min_node;
@@ -67,6 +67,6 @@ void	set_index(t_push **stack, int current_min, int index)
 		head = head->next;
 	}
 	min_node->index = index;
-	if (new_min != find_max(stack))
+	if (new_min != find_max(stack, 0))
 		set_index(stack, new_min, ++index);
 }

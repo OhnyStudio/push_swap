@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:05:07 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/22 15:56:46 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/23 13:55:33 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	count_rotation(t_push **stack, int value)
 	count = 0;
 	real_count = 0;
 	min_max[0] = find_min(stack);
-	min_max[1] = find_max(stack);
+	min_max[1] = find_max(stack, 0);
 	while (head)
 	{
 		if (head->next != NULL && head->value > value
@@ -112,4 +112,11 @@ int	count_rotation(t_push **stack, int value)
 		head = head->next;
 	}
 	return (real_count);
+}
+
+int	other_smaller(int value, int other_value)
+{
+	if (value > other_value)
+		return (1);
+	return (0);
 }

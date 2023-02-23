@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:05:20 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/22 15:33:17 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/23 12:44:11 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,4 @@ int	stack_size(t_push *stack)
 		i++;
 	}
 	return (i);
-}
-
-int	other_smaller(int value, int other_value)
-{
-	if (value > other_value)
-		return (1);
-	return (0);
 }

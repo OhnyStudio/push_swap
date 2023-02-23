@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_algo_complexe.c                               :+:      :+:    :+:   */
+/*   algo_complexe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 14:14:27 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/22 15:40:08 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/02/23 13:53:52 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	is_min_max(t_push **a, t_push **b, int min, int max)
 
 	if ((*a)->value == min)
 	{
-		if (ra_or_rra(b, find_max(b)) == 0)
+		if (ra_or_rra(b, find_max(b, 0)) == 0)
 			action = "rb";
 		else
 			action = "rrb";
@@ -63,11 +63,11 @@ static int	is_min_max(t_push **a, t_push **b, int min, int max)
 	}
 	else if ((*a)->value == max)
 	{
-		if (ra_or_rra(b, find_max(b)) == 0)
+		if (ra_or_rra(b, find_max(b, 0)) == 0)
 			action = "rrb";
 		else
 			action = "rb";
-		while ((*b)->value != find_max(b))
+		while ((*b)->value != find_max(b, 0))
 			send_action(action, a, b, 1);
 		return (1);
 	}
@@ -80,7 +80,7 @@ static char	*get_action(t_push **a, t_push **b, int value)
 
 	if (stack_size(*a) > 1)
 	{
-		if (other_smaller(value, find_tail(a)) == 0)
+		if (other_smaller(value, find_tail(a, 0)) == 0)
 			send_action("rra", a, b, 1);
 		else
 		{
@@ -109,7 +109,7 @@ void	insert_to_b(t_push **a, t_push **b, int min, int max)
 		{
 			action = get_action(a, b, head_a->value);
 			head_a = *a;
-			while (head_a->value > find_tail(b)
+			while (head_a->value > find_tail(b, 0)
 				|| head_a->value < head_b->value)
 			{
 				send_action(action, a, b, 1);
