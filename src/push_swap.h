@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/23 16:45:08 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/01 14:38:31 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,26 @@
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
 
+typedef struct s_move
+{
+	int				ra;
+	int				rra;
+	int				rb;
+	int				rrb;
+	int				rr;
+	int				rrr;
+	int				nb_moves;
+}	t_move;
+
 typedef struct s_push
 {
-	int				need_swap;
-	int				nb_r;
-	int				nb_rr;
 	int				value;
 	long			index;
 	long			current_index;
+	t_move			move;
 	struct s_push	*next;
 }	t_push;
 
-//List check rotation
-void	set_rotation(t_push **stack);
-char	*check_if_r_or_rr(t_push **stack);
 //List Check bit
 int		find_max_bit(int index);
 void	check_bit(t_push **stack_a, t_push **stack_b, int n, int max);
@@ -65,4 +71,10 @@ int		find_min(t_push	**stack);
 int		find_max(t_push	**stack, int needindex);
 int		find_tail(t_push **stack, int needindex);
 int		find_median(t_push **stack);
+//New new algo
+char	*witch_action(t_push **stack_b, int count);
+int		check_smallest_move(t_push **stack_b);
+void	move_weigth(t_push **stack_b);
+void	set_move(t_push **stack_a, t_push **stack_b);
+void	split_stack_nb(t_push **stack_a, t_push **stack_b, int nb_split);
 #endif
