@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 22:55:03 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/04 10:43:31 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/06 11:19:45 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,28 @@ void	make_rotation(t_push **stack_a, t_push **stack_b, int max)
 	{
 		while (is_sorted(stack_a) == 0)
 			send_action("rra", stack_a, stack_b, 1);
+	}
+}
+
+void	split_stack_nb(t_push **stack_a, t_push **stack_b, int nb_split)
+{
+	long	split_origin;
+	long	split_size;
+	long	split_count;
+
+	split_origin = stack_size(*stack_a) / nb_split;
+	split_size = split_origin;
+	split_count = 0;
+	while (stack_size(*stack_a) > 0)
+	{
+		if ((*stack_a)->index <= split_size)
+		{
+			split_count++;
+			send_action("pb", stack_a, stack_b, 1);
+			if (split_count >= split_size)
+				split_size += split_origin;
+		}
+		else
+			send_action("ra", stack_a, stack_b, 1);
 	}
 }

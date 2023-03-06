@@ -3,29 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:35:53 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/04 14:56:33 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/06 17:38:22 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// static void	complexe_algo(t_push **a, t_push **b, int min, int max)
-// {
-// 	int	size;
+static void	complexe_algo_2(t_push **a, t_push **b, int min, int max)
+{
+	int	size;
+	int	div_size;
 
-// 	size = stack_size(*a);
-// 	split_median(a, b);
-// 	while (stack_size(*b) > 0)
-// 		send_action("pa", a, b, 1);
-// 	swap_to_b(a, b, size);
-// 	insert_to_b(a, b, min, max);
-// 	while (stack_size(*b) > 0)
-// 		send_action("pa", a, b, 1);
-// 	make_rotation(a, b, max);
-// }
+	if (stack_size(*a) > 100)
+		div_size = 10;
+	else
+		div_size = 6;
+	split_stack_nb(a, b, div_size);
+	size = stack_size(*b);
+	swap_to_a(a, b, size);
+	// insert_to_a(a, b, min, max);
+	// if (is_sorted(a) != 1)
+	// 	make_rotation(a, b, max);
+	(void)min;
+	(void)max;
+}
 
 static void	algo3(t_push **stack_a, t_push **stack_b, int min, int max)
 {
@@ -71,8 +75,7 @@ static void	big_algo(t_push **stack_a, t_push **stack_b, int min, int max)
 		set_backward(stack_a, stack_b, max);
 	else
 	{
-		check_bit(stack_a, stack_b, 0);
-		move_stacks(stack_a, stack_b);
+		complexe_algo_2(stack_a, stack_b, min, max);
 	}
 }
 

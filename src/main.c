@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/01 13:09:18 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/06 11:02:22 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int	main(int argc, char **argv)
 	}
 	if (is_sorted(a) == 0)
 		sort_stack(a, b);
-	ft_putstr_fd("List A: \n", 1);
-	ft_print_list(a);
-	ft_putstr_fd("List B: \n", 1);
-	ft_print_list(b);
+	// ft_putstr_fd("List A: \n", 1);
+	// ft_print_list(a);
+	// ft_putstr_fd("List B: \n", 1);
+	// ft_print_list(b);
 	return (0);
 }
