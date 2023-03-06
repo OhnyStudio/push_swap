@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_creator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:59:09 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/23 16:17:21 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/04 03:43:57 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	set_current_index(t_push **stack)
 	i = 1;
 	while (head)
 	{
-		head->current_index = i;
 		i++;
 		head = head->next;
 	}

@@ -3,188 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   new_new_algo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 10:24:34 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/01 14:51:38 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:55:48 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	nb_ra(t_push **stack_a, int b_index)
-{
-	t_push	*head_a;
-	int		closest_index;
-	int		count;
-	int		i;
+// static int	fit_in(int top, int down, int new, int is_reverse)
+// {
+// 	if (is_reverse == 1)
+// 	{
+// 		if (top > new && down < new)
+// 			return (1);
+// 	}
+// 	else
+// 	{
+// 		if (top < new && down > new)
+// 			return (1);
+// 	}
+// 	return (0);
+// }
 
-	head_a = *stack_a;
-	closest_index = stack_size(*stack_a);
-	count = 0;
-	i = 0;
-	while (head_a)
+static int	fit_in_perfect(int top, int down, int new, int is_reverse)
+{
+	if (is_reverse == 1)
 	{
-		if (head_a->index < closest_index && head_a->index > b_index)
-		{
-			closest_index = head_a->index;
-			count = i;
-		}
-		head_a = head_a->next;
-		i++;
+		if (top == new + 1 && down == new - 1)
+			return (1);
 	}
-	return (count);
-}
-
-static int	nb_rra(t_push **stack_a, int b_index)
-{
-	int	size;
-	int	rra;
-
-	size = stack_size(*stack_a);
-	rra = size - nb_ra(stack_a, b_index);
-	return (rra);
-}
-
-static int	check_rr(int ra, int rb)
-{
-	if (ra > 0 && rb > 0)
+	else
 	{
-		if (ra < rb)
-			return (ra);
-		else
-			return (rb);
+		if (top == new - 1 && down == new + 1)
+			return (1);
 	}
 	return (0);
 }
 
-static int	check_rrr(int rra, int rrb)
+static void	set_indexes(t_push **stack_a, t_push **stack_b, t_index *index)
 {
-	if (rra > 0 && rrb > 0)
-	{
-		if (rra < rrb)
-			return (rra);
-		else
-			return (rrb);
-	}
-	return (0);
+	index->head_a = (*stack_a)->index;
+	index->swap_a = (*stack_a)->next->index;
+	index->tail_a = find_tail(stack_a, 1);
+	index->head_b = (*stack_b)->index;
+	index->swap_b = (*stack_b)->next->index;
+	index->tail_b = find_tail(stack_b, 1);
 }
 
-void	set_move(t_push **stack_a, t_push **stack_b)
+static void	one_move(t_push **stack_a, t_push **stack_b)
 {
-	t_push	*head;
-	int		i;
+	t_index	index;
 
-	head = *stack_b;
-	i = 0;
-	while (head)
-	{
-		head->move.ra = nb_ra(stack_a, head->index);
-		head->move.rb = i++;
-		head->move.rr = check_rr(head->move.ra, head->move.rb);
-		head->move.ra -= head->move.rr;
-		head->move.rb -= head->move.rr;
-		head->move.rra = nb_rra(stack_a, head->index);
-		head->move.rrb = stack_size(*stack_b) - i;
-		head->move.rrr = check_rrr(head->move.rra, head->move.rrb);
-		head->move.rra -= head->move.rrr;
-		head->move.rrb -= head->move.rrr;
-		head = head->next;
-	}
+	set_indexes(stack_a, stack_b, &index);
+	if (fit_in_perfect(index.tail_b, index.head_b, index.head_a, 0) == 1)
+		send_action("pb", stack_a, stack_b, 1);
+	else if (fit_in_perfect(index.swap_b, (*stack_b)->next->next->index,
+			index.head_b, 0) == 1)
+		send_action("sb", stack_a, stack_b, 1);
+	if (fit_in_perfect(index.head_a, index.tail_a, index.head_b, 0) == 1)
+		send_action("pa", stack_a, stack_b, 1);
+	else if (fit_in_perfect(index.swap_a, (*stack_a)->next->next->index,
+			index.head_a, 0) == 1)
+		send_action("sa", stack_a, stack_b, 1);
+}
+
+static void	two_move(t_push **stack_a, t_push **stack_b)
+{
+	//swap b fit in a
+	//swap a fit in b
+	//tail b fit in a
+	//tail a fit in b
 	(void)stack_a;
+	(void)stack_b;
 }
 
-void	move_weigth(t_push **stack_b)
+static void	three_move(t_push **stack_a, t_push **stack_b)
 {
-	t_push	*head;
-	int		r;
-	int		rr;
-	int		other[2];
-
-	head = *stack_b;
-	while (head)
-	{
-		r = head->move.ra + head->move.rb + head->move.rr;
-		rr = head->move.rra + head->move.rrb + head->move.rrr;
-		other[0] = head->move.ra + head->move.rrb;
-		other[1] = head->move.rb + head->move.rra;
-		if (r < rr && r < other[0] && r < other[1])
-			head->move.nb_moves = r;
-		else if (rr < r && rr < other[0] && rr < other[1])
-			head->move.nb_moves = rr;
-		else if (other[0] < r && other[0] < rr && other[0] < other[1])
-			head->move.nb_moves = other[0];
-		else if (other[1] < r && other[1] < rr && other[1] < other[0])
-			head->move.nb_moves = other[1];
-		head = head->next;
-	}
+	//swap b fit in swap a
+	//swap a fit in swap b
+	//2 x rb in a
+	//2 x ra in b
+	//2 x rr in a
+	//2 x rr in b
+	//2 x rrb in a
+	//2 x rra in b
+	//2 x rrr in a
+	//2 x rrr in b
+	//2 x ra and swap a
+	//2 x rb and swap b
+	//2 x rra and swap a
+	//2 x rrb and swap b
+	(void)stack_a;
+	(void)stack_b;
 }
 
-char	*witch_action(t_push **stack_b, int count)
+void	move_stacks(t_push **stack_a, t_push **stack_b)
 {
-	t_push	*head;
-	int		r;
-	int		rr;
-	int		other[2];
-
-	head = *stack_b;
-	while (count--)
-	{
-		head = head->next;
-	}
-	r = head->move.ra + head->move.rb + head->move.rr;
-	rr = head->move.rra + head->move.rrb + head->move.rrr;
-	other[0] = head->move.ra + head->move.rrb;
-	other[1] = head->move.rb + head->move.rra;
-	if (r < rr && r < other[0] && r < other[1])
-		return ("r");
-	else if (rr < r && rr < other[0] && rr < other[1])
-		return ("rr");
-	else if (other[0] < r && other[0] < rr && other[0] < other[1])
-		return ("rarrb");
-	else if (other[1] < r && other[1] < rr && other[1] < other[0])
-		return ("rbrra");
-	return ("pa");
-}
-
-void	split_stack_nb(t_push **stack_a, t_push **stack_b, int nb_split)
-{
-	long	split_origin;
-	long	split_size;
-	long	split_count;
-
-	split_origin = stack_size(*stack_a) / nb_split;
-	split_size = split_origin;
-	split_count = 0;
-	while (stack_size(*stack_a) > 0)
-	{
-		if ((*stack_a)->index <= split_size)
-		{
-			split_count++;
-			send_action("pb", stack_a, stack_b, 1);
-			if (split_count >= split_size)
-				split_size += split_origin;
-		}
-		else
-			send_action("ra", stack_a, stack_b, 1);
-	}
-}
-
-int	check_smallest_move(t_push **stack_b)
-{
-	t_push	*head;
-	int		smallest;
-	int		i;
-
-	head = *stack_b;
-	i = 0;
-	smallest = stack_size(*stack_b);
-	while (head)
-	{
-		if (head->move.nb_moves < smallest)
-			smallest = i;
-		i++;
-		head = head->next;
-	}
-	return (smallest);
+	one_move(stack_a, stack_b);
+	two_move(stack_a, stack_b);
+	three_move(stack_a, stack_b);
 }

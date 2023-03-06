@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   list_check_bit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:26:22 by jsavard           #+#    #+#             */
-/*   Updated: 2023/02/23 16:06:58 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:20:46 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_bit(t_push **stack_a, t_push **stack_b, int n, int max)
+void	check_bit(t_push **stack_a, t_push **stack_b, int n)
 {
 	int		size;
 
@@ -20,21 +20,10 @@ void	check_bit(t_push **stack_a, t_push **stack_b, int n, int max)
 	while (size--)
 	{
 		if ((*stack_a)->index & (1 << n))
-			send_action("pb", stack_a, stack_b, 1);
-		else
 			send_action("ra", stack_a, stack_b, 1);
-	}
-	size = stack_size(*stack_b);
-	n++;
-	while (size--)
-	{
-		if ((*stack_b)->index & (1 << n))
-			send_action("rb", stack_a, stack_b, 1);
 		else
-			send_action("pa", stack_a, stack_b, 1);
+			send_action("pb", stack_a, stack_b, 1);
 	}
-	if (n < max + 1)
-		check_bit(stack_a, stack_b, n, max);
 }
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/01 14:38:31 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/04 14:39:49 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,26 @@
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
 
-typedef struct s_move
+typedef struct s_index
 {
-	int				ra;
-	int				rra;
-	int				rb;
-	int				rrb;
-	int				rr;
-	int				rrr;
-	int				nb_moves;
-}	t_move;
+	int				head_a;
+	int				swap_a;
+	int				tail_a;
+	int				head_b;
+	int				swap_b;
+	int				tail_b;
+}	t_index;
 
 typedef struct s_push
 {
 	int				value;
 	long			index;
-	long			current_index;
-	t_move			move;
 	struct s_push	*next;
 }	t_push;
 
 //List Check bit
 int		find_max_bit(int index);
-void	check_bit(t_push **stack_a, t_push **stack_b, int n, int max);
+void	check_bit(t_push **stack_a, t_push **stack_b, int n);
 //Algo Complexe
 void	swap_to_b(t_push **a, t_push **b, int size);
 void	insert_to_b(t_push **a, t_push **b, int min, int max);
@@ -72,9 +69,5 @@ int		find_max(t_push	**stack, int needindex);
 int		find_tail(t_push **stack, int needindex);
 int		find_median(t_push **stack);
 //New new algo
-char	*witch_action(t_push **stack_b, int count);
-int		check_smallest_move(t_push **stack_b);
-void	move_weigth(t_push **stack_b);
-void	set_move(t_push **stack_a, t_push **stack_b);
-void	split_stack_nb(t_push **stack_a, t_push **stack_b, int nb_split);
+void	move_stacks(t_push **stack_a, t_push **stack_b);
 #endif

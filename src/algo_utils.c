@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 22:55:03 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/23 14:11:55 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/04 10:43:31 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	split_median(t_push **stack_a, t_push **stack_b)
 	size = stack_size(*stack_a);
 	while (size--)
 	{
-		if (head->value < median)
+		if (head->value >= median)
 		{
 			tmp = head->next;
 			send_action("pb", stack_a, stack_b, 1);
