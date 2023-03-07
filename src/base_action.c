@@ -6,11 +6,11 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 16:12:40 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/01 13:19:14 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:13:06 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static int	push(t_push **stack_to, t_push **stack_from)
 {

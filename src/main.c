@@ -6,11 +6,11 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/06 11:02:22 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:13:23 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static t_push	*create_new_node(int value)
 {

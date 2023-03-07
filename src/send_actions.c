@@ -5,18 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 11:06:58 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/06 11:09:26 by jsavard          ###   ########.fr       */
+/*   Created: 2023/03/07 12:48:45 by jsavard           #+#    #+#             */
+/*   Updated: 2023/03/07 13:13:25 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-void	send_actions(char *action, t_push **a, t_push **b, int count)
+void	send_actions_no_print(char *actions, t_push **a, t_push **b, int count)
 {
-	int	i;
-
-	i = count;
 	while (count--)
-		send_action(action, a, b, 1);
+		send_action(actions, a, b, 1);
+}
+
+void	send_actions_print(char *actions, t_push **a, t_push **b, int count)
+{
+	while (count--)
+		send_action(actions, a, b, 1);
 }

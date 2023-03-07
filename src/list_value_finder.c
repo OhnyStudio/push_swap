@@ -6,13 +6,13 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:50:56 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/23 14:54:23 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:13:20 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-int	find_min(t_push	**stack)
+int	find_min(t_push	**stack, int needindex)
 {
 	t_push	*head;
 	t_push	*min_node;
@@ -24,12 +24,16 @@ int	find_min(t_push	**stack)
 	{
 		if (head->value < min)
 		{
-			min = head->value;
+			if (needindex == 1)
+				min = head->index;
+			else
+				min = head->value;
 			min_node = head;
 		}
 		head = head->next;
 	}
-	min_node->index = 1;
+	if (needindex == 0)
+		min_node->index = 1;
 	return (min);
 }
 

@@ -6,11 +6,11 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 22:55:03 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/06 11:19:45 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:12:58 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	ra_or_rra(t_push **stack, int max)
 {
@@ -33,33 +33,7 @@ int	ra_or_rra(t_push **stack, int max)
 	return (0);
 }
 
-void	split_median(t_push **stack_a, t_push **stack_b)
-{
-	t_push	*head;
-	t_push	*tmp;
-	int		median;
-	int		size;
-
-	median = find_median(stack_a);
-	head = *stack_a;
-	size = stack_size(*stack_a);
-	while (size--)
-	{
-		if (head->value >= median)
-		{
-			tmp = head->next;
-			send_action("pb", stack_a, stack_b, 1);
-			head = tmp;
-		}
-		else
-		{
-			send_action("ra", stack_a, stack_b, 1);
-			head = *stack_a;
-		}
-	}
-}
-
-void	min_to_top(t_push **stack_a, t_push **stack_b, int min)
+void	min_to_top_4(t_push **stack_a, t_push **stack_b, int min)
 {
 	t_push	*head;
 	int		count;
@@ -68,7 +42,7 @@ void	min_to_top(t_push **stack_a, t_push **stack_b, int min)
 	count = 0;
 	while (head)
 	{
-		if (head->value == min)
+		if (head->index == min)
 			break ;
 		count++;
 		head = head->next;
@@ -81,6 +55,35 @@ void	min_to_top(t_push **stack_a, t_push **stack_b, int min)
 		send_action("sa", stack_a, stack_b, 1);
 	}
 	else if (count == 3)
+		send_action("rra", stack_a, stack_b, 1);
+}
+
+void	min_to_top_5(t_push **stack_a, t_push **stack_b, int min)
+{
+	t_push	*head;
+	int		count;
+
+	head = *stack_a;
+	count = 0;
+	while (head)
+	{
+		if (head->index == min)
+			break ;
+		count++;
+		head = head->next;
+	}
+	if (count == 1)
+		send_action("sa", stack_a, stack_b, 1);
+	else if (count == 2)
+	{
+		send_action("ra", stack_a, stack_b, 1);
+		send_action("sa", stack_a, stack_b, 1);
+	}
+	else if (count == 3)
+	{
+		send_actions_print("rra", stack_a, stack_b, 2);
+	}
+	else if (count == 4)
 		send_action("rra", stack_a, stack_b, 1);
 }
 
@@ -122,28 +125,5 @@ void	make_rotation(t_push **stack_a, t_push **stack_b, int max)
 	{
 		while (is_sorted(stack_a) == 0)
 			send_action("rra", stack_a, stack_b, 1);
-	}
-}
-
-void	split_stack_nb(t_push **stack_a, t_push **stack_b, int nb_split)
-{
-	long	split_origin;
-	long	split_size;
-	long	split_count;
-
-	split_origin = stack_size(*stack_a) / nb_split;
-	split_size = split_origin;
-	split_count = 0;
-	while (stack_size(*stack_a) > 0)
-	{
-		if ((*stack_a)->index <= split_size)
-		{
-			split_count++;
-			send_action("pb", stack_a, stack_b, 1);
-			if (split_count >= split_size)
-				split_size += split_origin;
-		}
-		else
-			send_action("ra", stack_a, stack_b, 1);
 	}
 }

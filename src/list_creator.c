@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_creator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:59:09 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/04 03:43:57 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/07 13:13:11 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 static t_push	*stack_last(t_push *stack)
 {

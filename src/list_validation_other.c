@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_validation_other.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:05:07 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/04 03:44:34 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/07 13:13:15 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	ft_print_list(t_push **a)
 {
@@ -96,7 +96,7 @@ int	count_rotation(t_push **stack, int value)
 	head = *stack;
 	count = 0;
 	real_count = 0;
-	min_max[0] = find_min(stack);
+	min_max[0] = find_min(stack, 0);
 	min_max[1] = find_max(stack, 0);
 	while (head)
 	{
@@ -112,11 +112,4 @@ int	count_rotation(t_push **stack, int value)
 		head = head->next;
 	}
 	return (real_count);
-}
-
-int	other_smaller(int value, int other_value)
-{
-	if (value > other_value)
-		return (1);
-	return (0);
 }

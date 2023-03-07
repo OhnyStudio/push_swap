@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   list_check_bit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:26:22 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/04 14:20:46 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/07 13:13:09 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 void	check_bit(t_push **stack_a, t_push **stack_b, int n)
 {
@@ -25,7 +25,6 @@ void	check_bit(t_push **stack_a, t_push **stack_b, int n)
 			send_action("pb", stack_a, stack_b, 1);
 	}
 }
-
 
 int	find_max_bit(int index)
 {

@@ -6,11 +6,11 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:05:20 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/02/23 12:44:11 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/07 13:13:18 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	is_int(char **argv)
 {
@@ -64,6 +64,28 @@ int	is_sorted(t_push **stack)
 		if (head->next != NULL)
 		{
 			if (head->value > head->next->value)
+			{
+				is_ok = 0;
+				break ;
+			}
+		}
+		head = head->next;
+	}
+	return (is_ok);
+}
+
+int	is_reverse_sorted(t_push **stack)
+{
+	t_push	*head;
+	int		is_ok;
+
+	head = *stack;
+	is_ok = 1;
+	while (head)
+	{
+		if (head->next != NULL)
+		{
+			if (head->value < head->next->value)
 			{
 				is_ok = 0;
 				break ;
