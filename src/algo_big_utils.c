@@ -6,13 +6,13 @@
 /*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 10:16:07 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/08 10:36:44 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/08 11:26:30 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	find_first_second(t_push **stack_a, int split, int need_moves)
+static int	first_move(t_push **stack_a, int split, int need_moves)
 {
 	t_push	*head_a;
 	int		first_nbs[2];
@@ -87,42 +87,41 @@ static int	check_rb_rrb(t_push **stack_b, int new_index)
 	return (i);
 }
 
-void	split_sort(t_push **stack_a, t_push **stack_b, int nb_split)
+static void	send_good_action(t_push **a, t_push **b, int current_split)
+{
+	int	rb;
+
+	if (first_move(a, current_split, 0) == 0)
+		send_actions("ra", a, b, first_move(a, current_split, 1));
+	else
+		send_actions("rra", a, b, first_move(a, current_split, 1));
+	if (stack_size(*b) > 1)
+	{
+		rb = check_rb_rrb(b, (*a)->index);
+		if (rb < stack_size(*b) - rb)
+			send_actions("rb", a, b, rb);
+		else
+			send_actions("rrb", a, b, stack_size(*b) - rb);
+	}
+	send_action("pb", a, b, 1);
+}
+
+void	split_sort(t_push **a, t_push **b, int nb_split)
 {
 	int	origin_split;
 	int	current_split;
 	int	i;
 
-	origin_split = stack_size(*stack_a) / nb_split;
+	origin_split = stack_size(*a) / nb_split;
 	current_split = origin_split;
 	i = 0;
-	while (stack_size(*stack_a) > 0)
+	while (stack_size(*a) > 0)
 	{
 		while (i < current_split)
 		{
-			if (stack_size(*stack_a) == 0)
+			if (stack_size(*a) == 0)
 				break ;
-			if (find_first_second(stack_a, current_split, 0) == 0)
-			{
-				if (stack_size(*stack_b) > 1)
-					send_action_ra(stack_a, stack_b,
-						find_first_second(stack_a, current_split, 1),
-						check_rb_rrb(stack_b, (*stack_a)->index));
-				else
-					send_action_ra(stack_a, stack_b,
-						find_first_second(stack_a, current_split, 1), 0);
-			}
-			else
-			{
-				if (stack_size(*stack_b) > 1)
-					send_action_rra(stack_a, stack_b,
-						find_first_second(stack_a, current_split, 1),
-						check_rb_rrb(stack_b, (*stack_a)->index));
-				else
-					send_action_rra(stack_a, stack_b,
-						find_first_second(stack_a, current_split, 1), 0);
-			}
-			send_action("pb", stack_a, stack_b, 1);
+			send_good_action(a, b, current_split);
 			i++;
 		}
 		current_split += origin_split;

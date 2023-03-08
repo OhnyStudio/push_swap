@@ -6,7 +6,7 @@
 /*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:50:56 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/08 10:15:12 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/08 11:07:04 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	find_min(t_push	**stack, int needindex)
 	while (head)
 	{
 		if (needindex == 1 && head->index < min)
-				min = head->index;
+			min = head->index;
 		else
 		{
 			if (head->value < min)

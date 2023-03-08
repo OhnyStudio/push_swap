@@ -6,7 +6,7 @@
 /*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/08 10:35:10 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/08 11:27:01 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,6 @@ int		find_max(t_push	**stack, int needindex);
 int		find_tail(t_push **stack, int needindex);
 int		find_median(t_push **stack);
 //Send Actions
-void	send_action_ra(t_push **a, t_push **b, int ra, int rb);
-void	send_action_rra(t_push **a, t_push **b, int rra, int rb);
-void	send_actions_print(char *actions, t_push **a, t_push **b, int count);
+void	send_actions(char *actions, t_push **a, t_push **b, int count);
 void	send_actions_no_print(char *actions, t_push **a, t_push **b, int count);
 #endif

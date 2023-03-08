@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 22:55:03 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/07 13:12:58 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/08 11:28:42 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	min_to_top_5(t_push **stack_a, t_push **stack_b, int min)
 	}
 	else if (count == 3)
 	{
-		send_actions_print("rra", stack_a, stack_b, 2);
+		send_actions("rra", stack_a, stack_b, 2);
 	}
 	else if (count == 4)
 		send_action("rra", stack_a, stack_b, 1);
