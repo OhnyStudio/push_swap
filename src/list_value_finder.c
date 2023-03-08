@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list_value_finder.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:50:56 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/07 13:13:20 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/08 10:15:12 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ int	find_min(t_push	**stack, int needindex)
 	head = *stack;
 	while (head)
 	{
-		if (head->value < min)
-		{
-			if (needindex == 1)
+		if (needindex == 1 && head->index < min)
 				min = head->index;
-			else
+		else
+		{
+			if (head->value < min)
+			{
 				min = head->value;
-			min_node = head;
+				min_node = head;
+			}
 		}
 		head = head->next;
 	}
@@ -41,24 +43,24 @@ int	find_max(t_push	**stack, int needindex)
 {
 	t_push	*head;
 	int		max;
-	int		index;
 
 	max = -2147483648;
-	index = 0;
 	head = *stack;
 	while (head)
 	{
-		if (head->value > max)
+		if (needindex == 1)
 		{
-			max = head->value;
-			index = head->index;
+			if (head->index > max)
+				max = head->index;
+		}
+		else
+		{
+			if (head->value > max)
+				max = head->value;
 		}
 		head = head->next;
 	}
-	if (needindex == 0)
-		return (max);
-	else
-		return (index);
+	return (max);
 }
 
 int	find_tail(t_push **stack, int needindex)

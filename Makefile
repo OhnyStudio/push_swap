@@ -4,6 +4,7 @@ CFLAGS 		=	-Wall -Wextra -Werror -g
 LIBFT_PATH	=	libft/
 LIBFT_LIB	=	$(LIBFT_PATH)libft.a
 CFILES		=	src/algo_utils.c \
+				src/algo_big_utils.c \
 				src/algo.c \
 				src/algo_6.c \
 				src/algo_big.c \

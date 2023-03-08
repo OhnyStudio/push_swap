@@ -3,14 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   algo_6.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:34:06 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/07 13:12:42 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/07 20:57:12 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
+
+static void	check_stack_b(t_push **stack_a, t_push **stack_b)
+{
+	if (stack_size(*stack_b) > 1)
+	{
+		if ((*stack_b)->index > (*stack_b)->next->index)
+			send_action("sb", stack_a, stack_b, 1);
+	}
+}
+
+void	split_stack_nb(t_push **stack_a, t_push **stack_b, int nb_split, int i)
+{
+	long	split_origin;
+	long	split_size;
+	long	split_count;
+	int		count;
+
+	split_origin = stack_size(*stack_a) / nb_split;
+	split_size = split_origin;
+	split_count = 0;
+	if (i == 1)
+		count = split_origin;
+	else
+		count = 0;
+	while (stack_size(*stack_a) > count)
+	{
+		if ((*stack_a)->index <= split_size)
+		{
+			split_count++;
+			send_action("pb", stack_a, stack_b, 1);
+			check_stack_b(stack_a, stack_b);
+			if (split_count >= split_size)
+				split_size += split_origin;
+		}
+		else
+			send_action("ra", stack_a, stack_b, 1);
+	}
+}
 
 static void	algo3(t_push **stack_a, t_push **stack_b, int min, int max)
 {
@@ -54,7 +92,8 @@ static void	algo3_reverse(t_push **stack_a, t_push **stack_b, int min, int max)
 			send_action("sb", stack_a, stack_b, 1);
 			send_action("rrb", stack_a, stack_b, 1);
 		}
-		send_action("rb", stack_a, stack_b, 1);
+		else
+			send_action("rb", stack_a, stack_b, 1);
 	}
 	else
 	{
