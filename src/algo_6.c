@@ -6,7 +6,7 @@
 /*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:34:06 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/07 20:57:12 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/10 14:35:25 by johnysavard      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_stack_b(t_push **stack_a, t_push **stack_b)
 	}
 }
 
-void	split_stack_nb(t_push **stack_a, t_push **stack_b, int nb_split, int i)
+static void	split_stack(t_push **stack_a, t_push **stack_b, int nb_split, int i)
 {
 	long	split_origin;
 	long	split_size;
@@ -109,8 +109,7 @@ void	algo6(t_push **stack_a, t_push **stack_b, int min, int max)
 	int	new_min;
 	int	new_max;
 
-	set_index(stack_a, min, 2);
-	split_stack_nb(stack_a, stack_b, 2, 1);
+	split_stack(stack_a, stack_b, 2, 1);
 	new_min = find_min(stack_a, 1);
 	new_max = find_max(stack_b, 1);
 	if (is_sorted(stack_a) == 0)
