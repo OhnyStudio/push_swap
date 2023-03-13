@@ -6,11 +6,13 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 13:27:02 by jsavard           #+#    #+#             */
-/*   Updated: 2022/11/09 15:31:01 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/13 16:03:35 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_check_max(unsigned long long nb, int signe)
+#include "libft.h"
+
+static long	ft_check_max(unsigned long long nb, int signe)
 {
 	if (nb > 9223372036854775807)
 	{
@@ -22,7 +24,7 @@ static int	ft_check_max(unsigned long long nb, int signe)
 	return (nb * signe);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int					i;
 	int					signe;

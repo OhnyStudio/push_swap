@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:45:03 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/13 14:20:24 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/13 15:48:06 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	check_bit(int index, int bit)
 	return (0);
 }
 
-int	find_max_bit(int max)
+int	find_max_bit(long max)
 {
-	int	bit;
-	int	i;
+	long	bit;
+	int		i;
 
 	i = 1;
 	bit = 2;
@@ -36,7 +36,7 @@ int	find_max_bit(int max)
 
 void	move_bit_b(t_push **stack_a, t_push **stack_b, int bit)
 {
-	int	size;
+	long	size;
 
 	size = stack_size(*stack_b);
 	while (size--)

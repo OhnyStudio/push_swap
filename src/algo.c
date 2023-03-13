@@ -6,13 +6,13 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:35:53 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/13 14:25:20 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/13 15:44:37 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	algo3(t_push **stack_a, t_push **stack_b, int min, int max)
+static void	algo3(t_push **stack_a, t_push **stack_b, long min, long max)
 {
 	if ((*stack_a)->index == min)
 	{
@@ -34,9 +34,9 @@ static void	algo3(t_push **stack_a, t_push **stack_b, int min, int max)
 	}
 }
 
-static void	algo4(t_push **stack_a, t_push **stack_b, int min, int max)
+static void	algo4(t_push **stack_a, t_push **stack_b, long min, long max)
 {
-	int	second_min;
+	long	second_min;
 
 	min_to_top_4(stack_a, stack_b, min);
 	send_action("pb", stack_a, stack_b, 1);
@@ -46,9 +46,9 @@ static void	algo4(t_push **stack_a, t_push **stack_b, int min, int max)
 	send_action("pa", stack_a, stack_b, 1);
 }
 
-static void	algo5(t_push **stack_a, t_push **stack_b, int min, int max)
+static void	algo5(t_push **stack_a, t_push **stack_b, long min, long max)
 {
-	int	second_min;
+	long	second_min;
 
 	min_to_top_5(stack_a, stack_b, min);
 	if (is_sorted(stack_a) == 0)
@@ -71,10 +71,10 @@ static void	algo5(t_push **stack_a, t_push **stack_b, int min, int max)
 	}
 }
 
-static void	big_algo(t_push **stack_a, t_push **stack_b, int max)
+static void	big_algo(t_push **stack_a, t_push **stack_b, long max)
 {
-	int	max_bit;
-	int	bit;
+	long	max_bit;
+	long	bit;
 
 	set_index(stack_a, find_min(stack_a, 0), 2);
 	if (find_if_rotate(stack_a) != 0)
@@ -99,9 +99,9 @@ static void	big_algo(t_push **stack_a, t_push **stack_b, int max)
 
 void	sort_stack(t_push **stack_a, t_push **stack_b)
 {
-	int	size;
-	int	min;
-	int	max;
+	long	size;
+	long	min;
+	long	max;
 
 	min = find_min(stack_a, 0);
 	set_index(stack_a, min, 2);

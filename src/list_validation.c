@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:05:20 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/07 13:13:18 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/13 16:29:27 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_int(char **argv)
 {
-	int	i;
-	int	j;
+	long	i;
+	long	j;
 
 	i = 1;
 	while (argv[i])
@@ -34,8 +34,8 @@ int	is_int(char **argv)
 
 int	check_twin(char	**argv)
 {
-	int	i;
-	int	j;
+	long	i;
+	long	j;
 
 	i = 1;
 	while (argv[i])
@@ -55,7 +55,7 @@ int	check_twin(char	**argv)
 int	is_sorted(t_push **stack)
 {
 	t_push	*head;
-	int		is_ok;
+	long	is_ok;
 
 	head = *stack;
 	is_ok = 1;
@@ -77,7 +77,7 @@ int	is_sorted(t_push **stack)
 int	is_reverse_sorted(t_push **stack)
 {
 	t_push	*head;
-	int		is_ok;
+	long	is_ok;
 
 	head = *stack;
 	is_ok = 1;
@@ -96,9 +96,9 @@ int	is_reverse_sorted(t_push **stack)
 	return (is_ok);
 }
 
-int	stack_size(t_push *stack)
+long	stack_size(t_push *stack)
 {
-	int	i;
+	long	i;
 
 	i = 0;
 	while (stack)

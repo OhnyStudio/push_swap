@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:05:07 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/07 13:13:15 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/13 16:08:08 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_print_list(t_push **a)
 int	find_if_rotate(t_push **stack)
 {
 	t_push	*head;
-	int		size;
-	int		next_index;
+	long	size;
+	long	next_index;
 
 	head = *stack;
 	size = stack_size(*stack);
@@ -60,8 +60,8 @@ int	find_if_rotate(t_push **stack)
 int	find_if_backward(t_push **stack)
 {
 	t_push	*head;
-	int		size;
-	int		next_index;
+	long	size;
+	long	next_index;
 
 	head = *stack;
 	size = stack_size(*stack);
@@ -86,12 +86,12 @@ int	find_if_backward(t_push **stack)
 	return (1);
 }
 
-int	count_rotation(t_push **stack, int value)
+long	count_rotation(t_push **stack, long value)
 {
 	t_push	*head;
-	int		count;
-	int		real_count;
-	int		min_max[2];
+	long	count;
+	long	real_count;
+	long	min_max[2];
 
 	head = *stack;
 	count = 0;
@@ -112,4 +112,14 @@ int	count_rotation(t_push **stack, int value)
 		head = head->next;
 	}
 	return (real_count);
+}
+
+long	check_max_min_int(long nb, int signe)
+{
+	if (signe < 0 && nb > 2147483648)
+		return (-1);
+	else if (signe > 0 && nb > 2147483647)
+		return (-1);
+	else
+		return (0);
 }

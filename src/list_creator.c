@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 10:59:09 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/07 13:13:11 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/13 16:52:02 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ void	add_front_stack(t_push **stack, t_push *new)
 	}
 }
 
-void	set_index(t_push **stack, int current_min, long index)
+void	set_index(t_push **stack, long current_min, long index)
 {
 	t_push	*head;
 	t_push	*min_node;
-	int		new_min;
+	long	new_min;
 
 	head = *stack;
-	new_min = 2147483647;
+	new_min = 21474836470;
 	while (head)
 	{
 		if (head->value < new_min && head->value > current_min)

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   algo_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 22:55:03 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/08 11:28:42 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/13 16:06:33 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-int	ra_or_rra(t_push **stack, int max)
+long	ra_or_rra(t_push **stack, long max)
 {
 	t_push	*head;
-	int		size;
-	int		count;
+	long	size;
+	long	count;
 
 	size = stack_size(*stack);
 	count = 0;
@@ -33,10 +33,10 @@ int	ra_or_rra(t_push **stack, int max)
 	return (0);
 }
 
-void	min_to_top_4(t_push **stack_a, t_push **stack_b, int min)
+void	min_to_top_4(t_push **stack_a, t_push **stack_b, long min)
 {
 	t_push	*head;
-	int		count;
+	long	count;
 
 	head = *stack_a;
 	count = 0;
@@ -58,10 +58,10 @@ void	min_to_top_4(t_push **stack_a, t_push **stack_b, int min)
 		send_action("rra", stack_a, stack_b, 1);
 }
 
-void	min_to_top_5(t_push **stack_a, t_push **stack_b, int min)
+void	min_to_top_5(t_push **stack_a, t_push **stack_b, long min)
 {
 	t_push	*head;
-	int		count;
+	long	count;
 
 	head = *stack_a;
 	count = 0;
@@ -87,10 +87,10 @@ void	min_to_top_5(t_push **stack_a, t_push **stack_b, int min)
 		send_action("rra", stack_a, stack_b, 1);
 }
 
-void	set_backward(t_push **stack_a, t_push **stack_b, int max)
+void	set_backward(t_push **stack_a, t_push **stack_b, long max)
 {
-	int		size;
-	int		i;
+	long	size;
+	long	i;
 
 	i = 0;
 	size = stack_size(*stack_a);
@@ -114,7 +114,7 @@ void	set_backward(t_push **stack_a, t_push **stack_b, int max)
 		send_action("pa", stack_a, stack_b, 1);
 }
 
-void	make_rotation(t_push **stack_a, t_push **stack_b, int max)
+void	make_rotation(t_push **stack_a, t_push **stack_b, long max)
 {
 	if (ra_or_rra(stack_a, max) == 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo_6.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:34:06 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/10 14:35:25 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/13 15:46:32 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	split_stack(t_push **stack_a, t_push **stack_b, int nb_split, int i)
 	}
 }
 
-static void	algo3(t_push **stack_a, t_push **stack_b, int min, int max)
+static void	algo3(t_push **stack_a, t_push **stack_b, long min, long max)
 {
 	if ((*stack_a)->index == min)
 	{
@@ -78,7 +78,7 @@ static void	algo3(t_push **stack_a, t_push **stack_b, int min, int max)
 	}
 }
 
-static void	algo3_reverse(t_push **stack_a, t_push **stack_b, int min, int max)
+static void	algo3_rever(t_push **stack_a, t_push **stack_b, long min, long max)
 {
 	if ((*stack_b)->index == max)
 	{
@@ -104,7 +104,7 @@ static void	algo3_reverse(t_push **stack_a, t_push **stack_b, int min, int max)
 	}
 }
 
-void	algo6(t_push **stack_a, t_push **stack_b, int min, int max)
+void	algo6(t_push **stack_a, t_push **stack_b, long min, long max)
 {
 	int	new_min;
 	int	new_max;
@@ -115,7 +115,7 @@ void	algo6(t_push **stack_a, t_push **stack_b, int min, int max)
 	if (is_sorted(stack_a) == 0)
 		algo3(stack_a, stack_b, new_min, max);
 	if (is_reverse_sorted(stack_b) == 0)
-		algo3_reverse(stack_a, stack_b, min, new_max);
+		algo3_rever(stack_a, stack_b, min, new_max);
 	while (stack_size(*stack_b) > 0)
 		send_action("pa", stack_a, stack_b, 1);
 }
