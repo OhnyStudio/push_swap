@@ -4,15 +4,11 @@ CFLAGS 		=	-Wall -Wextra -Werror -g
 LIBFT_PATH	=	libft/
 LIBFT_LIB	=	$(LIBFT_PATH)libft.a
 CFILES		=	src/algo_utils.c \
-				src/algo_big_first.c \
-				src/algo_big_next.c \
-				src/algo_big_other.c \
 				src/algo.c \
 				src/algo_6.c \
-				src/algo_big.c \
+				src/algo_binary.c \
 				src/base_action.c \
 				src/list_creator.c \
-				src/list_split.c \
 				src/list_validation_other.c \
 				src/list_validation.c \
 				src/list_value_finder.c \

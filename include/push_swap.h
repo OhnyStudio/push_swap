@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/10 14:55:35 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/13 14:15:41 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,10 @@
 # define PUSH_SWAP_H
 # include "../libft/libft.h"
 
-typedef struct s_stack
-{
-	int		next_min;
-	int		next_max;
-	int		possible_rb;
-	int		possible_rrb;
-	int		size_a;
-	int		size_b;
-	int		min;
-	int		max;
-}	t_stack;
-
-
 typedef struct s_push
 {
 	int				value;
 	int				index;
-	int				split_ra;
-	int				split_rra;
-	int				ra_best;
-	int				split;
 	struct s_push	*next;
 }	t_push;
 
@@ -44,14 +27,6 @@ void	min_to_top_4(t_push **stack_a, t_push **stack_b, int min);
 void	min_to_top_5(t_push **stack_a, t_push **stack_b, int min);
 void	set_backward(t_push **stack_a, t_push **stack_b, int max);
 void	make_rotation(t_push **stack_a, t_push **stack_b, int max);
-//Algo Big First
-void	check_first_best(t_push **a, t_push **b, t_stack *stack);
-//Algo Big Next
-void	check_next_best(t_push **a, t_push **b, t_stack *stack);
-//Algo Big Other
-int		get_next_min_pos(t_push **b, t_stack *stack);
-int		get_next_max_pos(t_push **b, t_stack *stack);
-void	check_other_best(t_push **a, t_push **b, t_stack *stack);
 //Validation
 int		is_int(char **argv);
 int		check_twin(char	**argv);
@@ -62,13 +37,12 @@ int		is_reverse_sorted(t_push **stack);
 void	sort_stack(t_push **stack_a, t_push **stack_b);
 //Algo 6
 void	algo6(t_push **stack_a, t_push **stack_b, int min, int max);
-//Algo Big
-void	stack_pa_update(t_push **a, t_push **b, t_stack *stack);
-void	big_algo(t_push **stack_a, t_push **stack_b, int min, int max);
+//Algo Binary
+int		find_max_bit(int max);
+void	move_bit_a(t_push **stack_a, t_push **stack_b, int bit);
+void	move_bit_b(t_push **stack_a, t_push **stack_b, int bit);
 //Base action
 int		send_action(char *action, t_push **a, t_push **b, int is_print);
-//List Check Bit
-void	check_bit(t_push **stack_a, t_push **stack_b, int n);
 //List creator
 void	add_back_stack(t_push **stack, t_push *new);
 void	add_front_stack(t_push **stack, t_push *new);
@@ -93,8 +67,4 @@ int		find_tail(t_push **stack, int needindex);
 int		find_median(t_push **stack);
 //Send Actions
 void	send_actions(char *actions, t_push **a, t_push **b, int count);
-void	send_actions_rb_min(t_push **a, t_push **b, t_stack *stack, int i);
-void	send_actions_rrb_min(t_push **a, t_push **b, t_stack *stack, int i);
-void	send_actions_rb_max(t_push **a, t_push **b, t_stack *stack, int j);
-void	send_actions_rrb_max(t_push **a, t_push **b, t_stack *stack, int j);
 #endif

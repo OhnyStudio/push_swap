@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johnysavard <johnysavard@student.42.fr>    +#+  +:+       +#+        */
+/*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/10 15:00:58 by johnysavard      ###   ########.fr       */
+/*   Updated: 2023/03/13 14:46:32 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	init_stack(t_push **stack, int argc, char **argv)
 	int		i;
 
 	i = 0;
+
 	if (argc == 2)
 		args = ft_split(argv[1], ' ');
 	else
@@ -54,13 +55,26 @@ static int	ft_error_message(char *str)
 	return (-1);
 }
 
+static void	free_list(t_push **stack)
+{
+	t_push	*temp;
+
+	while (stack && *stack)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
+	}
+	free(stack);
+}
+
 int	main(int argc, char **argv)
 {
 	t_push	**a;
 	t_push	**b;
 
-	if (argc < 2)
-		return (ft_error_message("Wrong paramaters!"));
+	if (argc == 1)
+		return (0);
 	else
 	{
 		if (is_int(argv) != 0 && check_twin(argv) != 0)
@@ -76,5 +90,7 @@ int	main(int argc, char **argv)
 	}
 	if (is_sorted(a) == 0)
 		sort_stack(a, b);
+	free_list(a);
+	free_list(b);
 	return (0);
 }
