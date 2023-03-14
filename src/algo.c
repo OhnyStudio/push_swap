@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:35:53 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/13 15:44:37 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:51:37 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,33 @@ static void	algo5(t_push **stack_a, t_push **stack_b, long min, long max)
 	}
 }
 
+void	stack_to_top(t_push **stack_a, t_push **stack_b)
+{
+	t_push	*head_b;
+	int		i;
+
+	while (stack_size(*stack_b) > 0)
+	{
+		head_b = *stack_b;
+		i = 0;
+		while (head_b)
+		{
+			if (head_b->index == find_max(stack_b, 1))
+				break ;
+			head_b = head_b->next;
+			i++;
+		}
+		if (i > 0)
+		{
+			if (i > stack_size(*stack_b) / 2)
+				send_actions("rrb", stack_a, stack_b, stack_size(*stack_b) - i);
+			else
+				send_actions("rb", stack_a, stack_b, i);
+		}
+		send_action("pa", stack_a, stack_b, 1);
+	}
+}
+
 static void	big_algo(t_push **stack_a, t_push **stack_b, long max)
 {
 	long	max_bit;
@@ -81,7 +108,7 @@ static void	big_algo(t_push **stack_a, t_push **stack_b, long max)
 		make_rotation(stack_a, stack_b, max);
 	else if (find_if_backward(stack_a) != 0)
 		set_backward(stack_a, stack_b, max);
-	else
+	else if (stack_size(*stack_a) > 100)
 	{
 		max_bit = find_max_bit(find_max(stack_a, 1));
 		bit = 0;
@@ -94,6 +121,11 @@ static void	big_algo(t_push **stack_a, t_push **stack_b, long max)
 		}
 		while (stack_size(*stack_b) > 0)
 			send_action("pa", stack_a, stack_b, 1);
+	}
+	else
+	{
+		split_stack(stack_a, stack_b, 6, 0);
+		stack_to_top(stack_a, stack_b);
 	}
 }
 

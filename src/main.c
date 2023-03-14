@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/14 09:35:54 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:28:45 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int	init_stack(t_push **stack, int argc, char **argv, int i)
 	t_push	*new;
 	char	**args;
 
-	if (argc == 2)
+	if (argc == 2 && is_int(argv) == 0)
 		args = ft_split(argv[1], ' ');
 	else
 	{

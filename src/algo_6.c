@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:34:06 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/13 15:46:32 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/14 15:34:52 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	check_stack_b(t_push **stack_a, t_push **stack_b)
 	}
 }
 
-static void	split_stack(t_push **stack_a, t_push **stack_b, int nb_split, int i)
+void	split_stack(t_push **stack_a, t_push **stack_b, int nb_split, int i)
 {
 	long	split_origin;
 	long	split_size;
