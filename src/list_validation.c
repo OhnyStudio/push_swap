@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 18:05:20 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/13 16:29:27 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/14 09:28:00 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@ int	is_int(char **argv)
 	return (1);
 }
 
-int	check_twin(char	**argv)
+int	check_twin(char	**argv, long i)
 {
-	long	i;
 	long	j;
 
-	i = 1;
 	while (argv[i])
 	{
 		j = 1 + i;

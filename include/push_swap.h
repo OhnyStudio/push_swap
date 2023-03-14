@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/13 16:29:25 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/14 09:26:19 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ long	count_rotation(t_push **stack, long value);
 void	ft_print_list(t_push **a);
 //List validation
 int		is_int(char **argv);
-int		check_twin(char	**argv);
+int		check_twin(char	**argv, long i);
 int		is_sorted(t_push **stack);
 int		is_reverse_sorted(t_push **stack);
 long	stack_size(t_push *stack);
