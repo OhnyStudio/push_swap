@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:52 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/14 15:35:11 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/15 14:49:50 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ void	set_backward(t_push **stack_a, t_push **stack_b, long max);
 void	make_rotation(t_push **stack_a, t_push **stack_b, long max);
 //Algo
 void	sort_stack(t_push **stack_a, t_push **stack_b);
+void	stack_to_top(t_push **stack_a, t_push **stack_b);
 void	split_stack(t_push **stack_a, t_push **stack_b, int nb_split, int i);
+//Algo Big
+void	big_algo(t_push **stack_a, t_push **stack_b, long max);
 //Algo 6
 void	algo6(t_push **stack_a, t_push **stack_b, long min, long max);
 //Algo Binary

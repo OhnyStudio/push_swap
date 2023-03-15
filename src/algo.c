@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 19:35:53 by johnysavard       #+#    #+#             */
-/*   Updated: 2023/03/14 15:51:37 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/15 14:52:24 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,37 +98,6 @@ void	stack_to_top(t_push **stack_a, t_push **stack_b)
 	}
 }
 
-static void	big_algo(t_push **stack_a, t_push **stack_b, long max)
-{
-	long	max_bit;
-	long	bit;
-
-	set_index(stack_a, find_min(stack_a, 0), 2);
-	if (find_if_rotate(stack_a) != 0)
-		make_rotation(stack_a, stack_b, max);
-	else if (find_if_backward(stack_a) != 0)
-		set_backward(stack_a, stack_b, max);
-	else if (stack_size(*stack_a) > 100)
-	{
-		max_bit = find_max_bit(find_max(stack_a, 1));
-		bit = 0;
-		while (max_bit--)
-		{
-			if (is_sorted(stack_a) == 0)
-				move_bit_a(stack_a, stack_b, bit++);
-			if (is_reverse_sorted(stack_b) == 0)
-				move_bit_b(stack_a, stack_b, bit);
-		}
-		while (stack_size(*stack_b) > 0)
-			send_action("pa", stack_a, stack_b, 1);
-	}
-	else
-	{
-		split_stack(stack_a, stack_b, 6, 0);
-		stack_to_top(stack_a, stack_b);
-	}
-}
-
 void	sort_stack(t_push **stack_a, t_push **stack_b)
 {
 	long	size;
@@ -151,5 +120,9 @@ void	sort_stack(t_push **stack_a, t_push **stack_b)
 	else if (size == 6)
 		algo6(stack_a, stack_b, min, max);
 	else if (size > 6)
+	{
+		if (find_if_rotate(stack_a) != 0)
+			make_rotation(stack_a, stack_b, max);
 		big_algo(stack_a, stack_b, max);
+	}
 }
