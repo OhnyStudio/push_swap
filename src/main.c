@@ -6,7 +6,7 @@
 /*   By: jsavard <jsavard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 16:41:27 by jsavard           #+#    #+#             */
-/*   Updated: 2023/03/15 17:27:54 by jsavard          ###   ########.fr       */
+/*   Updated: 2023/03/20 11:11:05 by jsavard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,11 @@ int	main(int argc, char **argv)
 			sort_stack(a, b);
 	}
 	else
+	{
+		free_list(a);
+		free_list(b);
 		return (ft_error_message("Wrong numbers!"));
+	}
 	free_list(a);
 	free_list(b);
 	return (0);
